@@ -5,5 +5,5 @@ export const getFeeds: IFeedImpl = async (src) => {
     const resp = await fetch(src);
     const body = await resp.text();
     const data = await parseStringPromise(body);
-    return data;
+    return data.rss.channel[0];
 };

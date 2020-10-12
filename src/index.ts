@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 7000;
 app.use(bodyParser.json());
 
 app.use("/api/health", health);
-app.use("/api/feed", feed);
+app.use("/api/feeds", feed);
 
 const server = app.listen(PORT);
 server.on("listening", () => {
