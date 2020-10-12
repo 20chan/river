@@ -9,6 +9,7 @@
         "no-namespace": false,
         "semicolon": true,
         "trailing-comma": true,
+        "max-classes-per-file": false,
         "typedef-whitespace": [
             true,
             {
