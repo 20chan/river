@@ -2,7 +2,7 @@ FROM node
 
 WORKDIR /app
 
-COPY ./app /app
+COPY ./ /app
 RUN npm install
 
 CMD npm run start
