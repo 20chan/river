@@ -21,8 +21,13 @@ route.get("/:feed", async (req, resp) => {
         return;
     }
 
-    const result = await getFeed(feed).get(url);
-    resp.json(result);
+    try {
+        const result = await getFeed(feed).get(url);
+        resp.json(result);
+    } catch {
+        resp.status(400);
+        resp.send({"error": true, "message": "fetch failed"});
+    }
 });
 
 export { route };
