@@ -8,9 +8,9 @@ export const getFeeds: IFeedImpl = async (src) => {
         const feed = await parser.parseURL(src);
         const items = feed.items === undefined ? [] : feed.items.map(m => ({
             title: m.title || "",
-            description: m.description || "",
+            description: m.content || "",
             link: m.link || "",
-            guid: m.guid || "",
+            guid: m.guid || m.link || "",
         }));
         const result = {
             title: feed.title || "",

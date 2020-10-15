@@ -24,9 +24,10 @@ route.get("/:feed", async (req, resp) => {
     try {
         const result = await getFeed(feed).get(url);
         resp.json(result);
-    } catch {
+    } catch(err) {
         resp.status(400);
         resp.send({"error": true, "message": "fetch failed"});
+        console.error(`error fetching ${feed} ${url}`, err);
     }
 });
 

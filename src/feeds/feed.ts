@@ -16,7 +16,7 @@ export interface IFeedItem {
 
 export const schema = Joi.object({
     title: Joi.string().required(),
-    description: Joi.string().required(),
+    description: Joi.string().allow("").required(),
     link: Joi.string().uri().required(),
     items: Joi.array().items(
         Joi.object({
