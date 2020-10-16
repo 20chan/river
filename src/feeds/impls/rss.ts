@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 import Parser from "rss-parser";
 import { IFeedChannel, IFeedImpl, schema } from "../feed";
 
@@ -5,7 +6,11 @@ const parser = new Parser();
 
 export const getFeeds: IFeedImpl = async (src) => {
     try {
-        const feed = await parser.parseURL(src);
+        const req = await fetch(src, {
+            headers: { "User-Agent": "river" },
+        });
+        const xml = await req.text();
+        const feed = await parser.parseString(xml);
         const items = feed.items === undefined ? [] : feed.items.map(m => ({
             title: m.title || "",
             description: m.content || "",
